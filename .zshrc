@@ -255,3 +255,7 @@ _fzf_comprun() {
   esac
 }
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/private/.sdkman"
+[[ -s "/home/private/.sdkman/bin/sdkman-init.sh" ]] && source "/home/private/.sdkman/bin/sdkman-init.sh"
