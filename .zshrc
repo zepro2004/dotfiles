@@ -223,7 +223,7 @@ alias h='history'         # Display history
 alias e='exit'            # Exit the terminal session
 alias zshrc='nvim ~/.zshrc' # Edit .zshrc quickly
 alias v='nvim'           # Use `nvim` instead of `vim` (if installed)
-alias update='sudo dnf upgrade -y'
+alias update='ujust update && ~/dotfiles/auto-firefox.sh'
 
 #Added apps
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
