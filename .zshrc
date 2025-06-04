@@ -216,6 +216,7 @@ alias glg='git log --graph --oneline --decorate --all' # Git log with graph
 alias gp='git push'             # Git push
 alias gpull='git pull'          # Git pull
 alias gcl='git clone'           # Git clone
+alias lg='lazygit'
 
 # Miscellaneous
 alias path='echo $PATH'   # Print the $PATH variable
@@ -259,3 +260,4 @@ _fzf_comprun() {
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/private/.sdkman"
 [[ -s "/home/private/.sdkman/bin/sdkman-init.sh" ]] && source "/home/private/.sdkman/bin/sdkman-init.sh"
+export PATH="$HOME/.cargo/bin:$PATH"

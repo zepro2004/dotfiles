@@ -149,15 +149,10 @@ alias gm="git merge"
 alias gr="git remote -v"
 alias lg="lazygit"
 
-
-
-
 alias update="sudo apt update && sudo apt upgrade"       # Debian/Ubuntu
 alias serve="python3 -m http.server"                     # Quick file server
 alias ip="ip a | grep inet"                              # Show IP addresses
 alias path='echo $PATH | tr ":" "\n"'                    # View PATH in lines
-
-
 
 alias v="nvim"
 alias n="nano"
@@ -175,3 +170,4 @@ alias hist="history | grep"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="$HOME/.cargo/bin:$PATH"
