@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+# Sdkman initialization
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -257,9 +260,6 @@ _fzf_comprun() {
 }
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/private/.sdkman"
-[[ -s "/home/private/.sdkman/bin/sdkman-init.sh" ]] && source "/home/private/.sdkman/bin/sdkman-init.sh"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # fzf-tab plugin
@@ -282,5 +282,20 @@ if command -v tmux >/dev/null 2>&1; then
   fi
 fi
 
+alias home="tmux attach-session -t Home"
 
+# Fastfetch setup
+#run_fastfetch() {
+#  if command -v fastfetch &>/dev/null; then
+#    fastfetch
+#  else
+#    echo "fastfetch is not installed. Installing with Homebrew..."
+#    if command -v brew &>/dev/null; then
+#      brew install fastfetch && fastfetch
+#    else
+#      echo "Homebrew is not installed. Please install Homebrew first: https://brew.sh"
+#    fi
+#  fi
+#}
 
+#run_fastfetch
