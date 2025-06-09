@@ -272,11 +272,15 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-
-# Auto-attach to tmux if not already inside a session
 if command -v tmux >/dev/null 2>&1; then
   if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
-    tmux attach
+    if tmux has-session -t Home 2>/dev/null; then
+      tmux attach -t Home
+    else
+      tmux new-session -s Home \; run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'
+    fi
   fi
 fi
+
+
 
