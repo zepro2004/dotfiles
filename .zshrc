@@ -234,7 +234,7 @@ alias cat="bat"
 
 # ----- Bat (better cat) -----
 
-export BAT_THEME=tokyonight_night
+export BAT_THEME=OneHalfDark
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
@@ -261,3 +261,22 @@ _fzf_comprun() {
 export SDKMAN_DIR="/home/private/.sdkman"
 [[ -s "/home/private/.sdkman/bin/sdkman-init.sh" ]] && source "/home/private/.sdkman/bin/sdkman-init.sh"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# fzf-tab plugin
+source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+
+# zsh-completions initialization
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
+
+
+# Auto-attach to tmux if not already inside a session
+if command -v tmux >/dev/null 2>&1; then
+  if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+    tmux attach
+  fi
+fi
+
