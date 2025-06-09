@@ -1,0 +1,62 @@
+📁 Session Management
+tmux                # Start a new session
+tmux ls             # List sessions
+tmux attach         # Attach to last session
+tmux attach -t name # Attach to a named session
+tmux kill-session   # Kill current session
+tmux kill-session -t name # Kill a named session
+tmux new -s name    # Create a new session with a name
+tmux rename-session -t oldname newname # Rename current session
+tmux switch -t name  # Switch to a named session
+tmux detach         # Detach from current session
+
+🪟 Window Management
+Ctrl+b c     # Create new window
+Ctrl+b n     # Next window
+Ctrl+b p     # Previous window
+Ctrl+b w     # List windows
+Ctrl+b ,     # Rename current window
+Ctrl+b &     # Kill current window
+Ctrl+b 0-9   # Switch to window by number (0-9)
+Ctrl+b l     # Switch to last window
+
+
+🔳 Pane Management
+Ctrl+b "     # Split pane horizontally
+Ctrl+b %     # Split pane vertically
+Ctrl+b o     # Switch to next pane
+Ctrl+b ;     # Toggle between last two panes
+Ctrl+b x     # Kill current pane
+Ctrl+b q     # Show pane numbers
+Ctrl+b {     # Move current pane left
+Ctrl+b }     # Move current pane right
+Ctrl+b Ctrl+←/→/↑/↓  # Move pane (may vary by system)
+Ctrl+b :swap-pane -D/U/L/R  # Swap pane with another in the specified direction
+Ctrl+b :join-pane -s source -t target  # Join pane from source to target
+Ctrl+b :break-pane  # Break current pane into a new window
+Ctrl+b :select-pane -L/R/U/D  # Select pane in specified direction
+Ctrl+b :select-pane -t target  # Select pane by target name or number
+
+↕️ Pane Resize (may need enabling)
+
+Ctrl+b Ctrl+←/→/↑/↓  # Resize pane (may vary by system)
+Ctrl+b :resize-pane -D/U/L/R 10  # Precise resize
+Ctrl+b :resize-pane -D/U/L/R 5   # Resize by 5 lines/columns
+
+🔁 Misc / Navigation
+
+Ctrl+b d     # Detach from session
+Ctrl+b ?     # Show all keybindings
+Ctrl+b [     # Enter copy/scroll mode
+Ctrl+b ]     # Paste from buffer
+Ctrl+b t     # Show time
+
+
+Ctrl+b :list-keys  # List all keybindings
+Ctrl+b :source-file ~/.tmux.conf  # Reload tmux config
+Ctrl+b :new-window  # Create a new Window
+Ctrl+b :kill-window  # Kill current Window
+Ctrl+b :new-session  # Create a new Session
+Ctrl+b :kill-session  # Kill current Session
+Ctrl+b :rename-session  # Rename current Session
+
