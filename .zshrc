@@ -232,11 +232,30 @@ if [[ -n $PS1 ]] && command -v tmux >/dev/null 2>&1; then
 fi
 alias home="tmux attach-session -t Home"
 
-# ============================
-#   1Password SSH Agent Bridge
-# ============================
-export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-if [[ -z "$TMUX" ]] && [[ ! -S "$SSH_AUTH_SOCK" ]]; then
-  nohup "$HOME/.ssh/1password-ssh-relay.sh" >/dev/null 2>&1 &
+# ====================================
+#   1Password SSH Agent Bridge for WSL  
+# ====================================
+is_wsl() {
+  grep -qi microsoft /proc/version 2>/dev/null
+}
+
+if is_wsl; then
+  AGENT_SOCK="$HOME/.ssh/agent.sock"
+  RELAY_SCRIPT="$HOME/.ssh/1password-ssh-relay.sh"
+
+  export SSH_AUTH_SOCK="$AGENT_SOCK"
+
+  start_ssh_relay() {
+    if ! pgrep -f "$(basename "$RELAY_SCRIPT")" >/dev/null 2>&1; then
+      echo "Starting 1Password SSH agent relay..."
+      nohup "$RELAY_SCRIPT" >/dev/null 2>&1 &
+    fi
+  }
+
+  if [[ -z "$TMUX" ]]; then
+    if [[ ! -S "$AGENT_SOCK" ]] || ! timeout 1 ssh-add -l >/dev/null 2>&1; then
+      start_ssh_relay
+    fi
+  fi
 fi
 
