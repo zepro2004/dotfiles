@@ -221,16 +221,16 @@ fi
 # ============================
 #   tmux Session Management
 # ============================
-if [[ -n $PS1 ]] && command -v tmux >/dev/null 2>&1; then
-  if [[ -z "$TMUX" ]]; then
-    if tmux has-session -t Home 2>/dev/null; then
-      tmux attach -t Home
-    else
-      tmux new-session -s Home \; run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'
-    fi
-  fi
-fi
-alias home="tmux attach-session -t Home"
+#if [[ -n $PS1 ]] && command -v tmux >/dev/null 2>&1; then
+#  if [[ -z "$TMUX" ]]; then
+#    if tmux has-session -t Home 2>/dev/null; then
+#      tmux attach -t Home
+#    else
+#      tmux new-session -s Home \; run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'
+#    fi
+#  fi
+#fi
+#alias home="tmux attach-session -t Home"
 
 # ====================================
 #   1Password SSH Agent Bridge for WSL  
@@ -259,3 +259,18 @@ if is_wsl; then
   fi
 fi
 
+# ============================
+#   Atuin History Management
+eval "$(atuin init zsh)"
+alias history='atuin history list'
+alias fc='atuin search'
+
+# Bind Up/Down arrow to fuzzy match history with current input
+autoload -U up-line-or-search
+autoload -U down-line-or-search
+
+zle -N _atuin_up_search up-line-or-search
+zle -N _atuin_down_search down-line-or-search
+
+bindkey '^[[A' _atuin_up_search   # Up Arrow
+bindkey '^[[B' _atuin_down_search # Down Arrow
