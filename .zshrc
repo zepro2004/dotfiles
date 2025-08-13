@@ -274,3 +274,4 @@ zle -N _atuin_down_search down-line-or-search
 
 bindkey '^[[A' _atuin_up_search   # Up Arrow
 bindkey '^[[B' _atuin_down_search # Down Arrow
+if [ -f ~/.env_secrets ]; then source ~/.env_secrets; fi
